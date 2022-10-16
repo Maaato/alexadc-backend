@@ -1,0 +1,7 @@
+{
+    "LaunchRequest": {
+        "speechText": "¡¡Bienvenido {username} a Alexa Discord Skill!!",
+        "repromptText": "{username}, puedes preguntarme lo que sea.",
+        "simpleCardText": "¡Preguntame lo que sea!"
+    }
+}

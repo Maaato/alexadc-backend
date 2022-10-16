@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
+import { AlexaSkillsModule } from './api/alexa-skills/alexa-skills.module';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
-  imports: [],
+  imports: [AlexaSkillsModule],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
