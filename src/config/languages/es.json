@@ -1,0 +1,14 @@
+{
+    "LaunchRequest": {
+        "speechText": "¡¡Bienvenido {username} a Alexa Discord Skill!!",
+        "repromptText": "{username}, puedes preguntarme lo que sea.",
+        "simpleCardText": "¡Preguntame lo que sea!"
+    },
+    "CancelAndStopHandler": {
+        "speechText": "'Hasta la proxima en Discord!",
+        "simpleCardTitle": "¡Adiós!"
+    },
+    "ErrorHandler": {
+        "speechText": "Un error ha ocurrido, ¿puedes repetir el comando otra vez?"
+    }
+}

@@ -1,12 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-
+import { Controller, Get, HttpCode, HttpStatus, Res } from '@nestjs/common';
+import { Response } from 'express';
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
+  
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @HttpCode(HttpStatus.OK)
+  getRoot(@Res() res: Response) {
+    return res.json({
+      name: require(process.cwd() + '/package.json').name,
+      version: require(process.cwd() + '/package.json').version,
+      status: 'up',
+    });
   }
 }
