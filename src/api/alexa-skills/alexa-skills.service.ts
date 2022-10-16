@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { SkillBuilders } from 'ask-sdk-core';
-import { LaunchRequestHandler, SessionEndedRequestHandler } from './handlers';
+import { LaunchRequestHandler, SessionEndedRequestHandler, CancelAndStopHandler, AlexaErrorHandler } from './handlers';
 
 @Injectable()
 export class AlexaSkillsService {
@@ -13,8 +13,10 @@ export class AlexaSkillsService {
       responseEnvelope = await new Promise<ResponseEnvelope>((resolve, reject) => {
           SkillBuilders.custom().withSkillId(process.env.ALEXA_SKILL_ID).addRequestHandlers(
             new LaunchRequestHandler(),
-            new SessionEndedRequestHandler()
-          ).lambda()(requestEnvelope, requestEnvelope.context, (err : Error , result: ResponseEnvelope) => {
+            new SessionEndedRequestHandler(),
+            new CancelAndStopHandler()
+          ).addErrorHandlers(new AlexaErrorHandler())
+          .lambda()(requestEnvelope, requestEnvelope.context, (err : Error , result: ResponseEnvelope) => {
             if(err){
               console.error(`Error handling Alexa request: ${err.message}`, err)
               reject(err.message)
