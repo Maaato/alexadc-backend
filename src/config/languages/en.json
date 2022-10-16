@@ -1,14 +1,25 @@
 {
-    "LaunchRequest": {
-        "speechText": "Welcome {username} to Alexa Discord Skill !",
-        "repromptText": "{username}, you can ask me anything.",
-        "simpleCardText": "Ask me for anything !"
+  "LaunchRequest": {
+    "speechText": "Welcome {username} to Alexa Discord Skill !",
+    "repromptText": "{username}, you can ask me anything.",
+    "simpleCardText": "Ask me for anything !"
+  },
+  "CancelAndStopHandler": {
+    "speechText": "See you next time on Discord !",
+    "simpleCardTitle": "Bye !"
+  },
+  "ErrorHandler": {
+    "speechText": "An error occured, can you say your command again ?"
+  },
+  "PlaySongOnDiscordIntent": {
+    "success": {
+      "speechText": "Playing {requestedSong} on Discord!",
+      "simpleCardTitle": "Message sent !",
+      "simpleCardText": "Playing '{requestedSong}' on Discord."
     },
-    "CancelAndStopHandler": {
-        "speechText": "See you next time on Discord !",
-        "simpleCardTitle": "Bye !"
-    },
-    "ErrorHandler": {
-        "speechText": "An error occured, can you say your command again ?"
+    "error": {
+      "speechText": "Sorry, I couldn't play {requestedSong}!",
+      "simpleCardTitle": "An error occured"
     }
+  }
 }
