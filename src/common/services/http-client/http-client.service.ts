@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from 'axios';
 import { Injectable } from '@nestjs/common';
-import { IHttpParams } from 'src/common/interfaces/http.interface';
+import { IHttpParams } from 'src/interfaces/http.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
