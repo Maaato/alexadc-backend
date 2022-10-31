@@ -1,20 +1,32 @@
-import { HandlerInput, getLocale, ErrorHandler } from 'ask-sdk-core';
+import { Logger } from '@nestjs/common';
+import { HandlerInput, getLocale, ErrorHandler, getIntentName } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
+import { AlexaSkillsService } from '../alexa-skills.service';
+import { getHandlerNameByIntentName } from 'src/utils/alexa.utils';
+
+
 export class AlexaErrorHandler implements ErrorHandler {
+
+  private readonly logger = new Logger(AlexaErrorHandler.name)
+
+  constructor(
+    private readonly _alexaSkillsService: AlexaSkillsService,
+  ) { }
 
   canHandle(): boolean {
     return true;
   }
 
-  handle(handlerInput: HandlerInput): Response {
-
-    const languageForSpeech = getLocale(handlerInput.requestEnvelope).split("-")[0];
-    const { speechText } = require(`../../../config/languages/${languageForSpeech}.json`)["ErrorHandler"];
+  handle(handlerInput: HandlerInput, error: Error): Response {
+    const intentName = getIntentName(handlerInput.requestEnvelope);
+    this.logger.warn(`Error handling '${intentName}' | ${error}`);
+    const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
+    const handlerName = getHandlerNameByIntentName(intentName);
+    const { error: { outputSpeech } } = this._alexaSkillsService.getHandlerResponseBuilderMessage(handlerName, localeRequest);
 
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .reprompt(speechText)
+      .speak(outputSpeech)
       .withShouldEndSession(false)
       .getResponse();
   }

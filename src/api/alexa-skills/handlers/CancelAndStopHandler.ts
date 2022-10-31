@@ -1,7 +1,13 @@
 import { HandlerInput, RequestHandler, getLocale } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
+import { AlexaSkillsService } from '../alexa-skills.service';
 
 export class CancelAndStopHandler implements RequestHandler {
+
+  constructor(
+    private readonly _alexaSkillsService: AlexaSkillsService,
+  ) { }
+
   canHandle(handlerInput: HandlerInput): boolean {
     const request = handlerInput.requestEnvelope.request;
     return (
@@ -11,13 +17,11 @@ export class CancelAndStopHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-
-    const languageForSpeech = getLocale(handlerInput.requestEnvelope).split("-")[0];
-    const { speechText, simpleCardTitle } = require(`../../../config/languages/${languageForSpeech}.json`)["CancelAndStopHandler"];
+    const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
+    const { success: { outputSpeech } } = this._alexaSkillsService.getHandlerResponseBuilderMessage(CancelAndStopHandler.name, localeRequest);
 
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard(simpleCardTitle, speechText)
+      .speak(outputSpeech)
       .withShouldEndSession(true)
       .getResponse();
   }
