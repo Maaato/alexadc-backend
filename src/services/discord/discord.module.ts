@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { CommonModule } from 'src/common/common.module';
+import { HttpClientModule } from 'src/services/http-client/services.module';
 import { DiscordService } from './discord.service';
 
 @Module({
-  imports: [CommonModule],
+  imports: [HttpClientModule],
   providers: [DiscordService],
   exports: [DiscordService]
 })

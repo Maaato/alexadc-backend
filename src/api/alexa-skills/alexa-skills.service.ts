@@ -3,7 +3,7 @@ import { RequestEnvelope, ResponseEnvelope, } from 'ask-sdk-model';
 import { SkillBuilders, getIntentName, getRequestType } from 'ask-sdk-core';
 
 import { LaunchRequestHandler, SessionEndedRequestHandler, CancelAndStopHandler, AlexaErrorHandler, PlaySongOnDiscordHandler } from './handlers';
-import { DiscordService } from '../discord/discord.service';
+import { DiscordService } from '../../services/discord/discord.service';
 import { RESPONSE_BUILDER_MESSAGES } from '../../constants/handlers-messages.constants';
 import Constants from '../../constants/alexa.constants'
 

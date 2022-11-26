@@ -1,7 +1,7 @@
 import { HandlerInput, RequestHandler, getLocale, getSlotValue } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
-import { DiscordService } from 'src/api/discord/discord.service';
+import { DiscordService } from 'src/services/discord/discord.service';
 import { AlexaSkillsService } from '../alexa-skills.service';
 
 export class PlaySongOnDiscordHandler implements RequestHandler {

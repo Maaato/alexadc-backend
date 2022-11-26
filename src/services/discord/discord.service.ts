@@ -2,7 +2,7 @@ import { AxiosResponse, AxiosRequestHeaders } from 'axios'
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 
-import { HttpClientService } from 'src/common/services/http-client/http-client.service';
+import { HttpClientService } from 'src/services/http-client/http-client.service';
 
 @Injectable()
 export class DiscordService {

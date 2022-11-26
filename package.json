@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@discord-nestjs/core": "^4.3.1",
     "@nestjs/axios": "^0.1.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
@@ -30,6 +31,7 @@
     "ask-sdk-core": "^2.12.1",
     "ask-sdk-express-adapter": "^2.12.1",
     "ask-sdk-model": "^1.39.0",
+    "discord.js": "^14.6.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"

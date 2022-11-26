@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AlexaSkillsService } from './alexa-skills.service';
 import { AlexaSkillsController } from './alexa-skills.controller';
-import { DiscordModule } from '../discord/discord.module';
+import { DiscordModule } from '../../services/discord/discord.module';
 
 @Module({
   imports: [DiscordModule],
