@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { VoiceState } from 'discord.js';
-import mongoose, { Model } from 'mongoose';
+import { Model } from 'mongoose';
 
 import { MemberDocument } from 'src/database/schemas/member.schema';
 import { MemberVoiceState } from './models/memberVoiceState.dto';
@@ -17,7 +16,7 @@ export class BotService {
     async updateMemberVoiceState({ memberVoiceState }: { memberVoiceState: MemberVoiceState }): Promise<MemberDocument> {
         const { userId, username, discriminator, guildId, guildName, currentChannelId } = memberVoiceState;
         this.logger.log(`Updating member voice state ${username}`)
-        return await this.memberModel.findOneAndUpdate({ userId },
+        return this.memberModel.findOneAndUpdate({ userId },
             { $set: { userId, username, discriminator, guildId, guildName, currentChannelId } },
             { upsert: true, new: true }
         );
@@ -25,7 +24,7 @@ export class BotService {
 
     async getMemberVoiceState({ userId }: { userId: string }): Promise<MemberDocument> {
         this.logger.log(`Finding member by id ${userId}`)
-        const member = await this.memberModel.findOne({ userId });
+        const member = this.memberModel.findOne({ userId });
         console.log("member", member);
         return member;
     }

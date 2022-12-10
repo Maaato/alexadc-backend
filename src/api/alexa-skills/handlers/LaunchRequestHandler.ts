@@ -1,4 +1,4 @@
-import { HandlerInput, RequestHandler, getLocale, getRequestType } from 'ask-sdk-core';
+import { HandlerInput, RequestHandler, getLocale } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
 import { AlexaSkillsService } from '../alexa-skills.service';
