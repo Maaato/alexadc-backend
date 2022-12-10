@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DiscordModule } from '@discord-nestjs/core';
 import { GatewayIntentBits } from 'discord.js';
+import { MongooseModule } from '@nestjs/mongoose';
 import { BotGateway } from './bot.gateway';
+import { MemberSchema } from 'src/database/schemas/member.schema';
+import { BotService } from './bot.service';
 
 @Module({
     imports: [
@@ -17,7 +20,8 @@ import { BotGateway } from './bot.gateway';
             }),
             inject: [ConfigService],
         }),
+        MongooseModule.forFeature([{ name: 'Member', schema: MemberSchema }]),
     ],
-    providers: [BotGateway]
+    providers: [BotGateway, BotService]
 })
 export class BotModule { }

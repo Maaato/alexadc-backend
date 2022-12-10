@@ -20,7 +20,7 @@ export class AlexaSkillsService {
     let responseEnvelope: ResponseEnvelope;
     const requestType = getRequestType(requestEnvelope);
     const intentName = requestType === 'IntentRequest' ? getIntentName(requestEnvelope) : '';
-    this.logger.log(`handling ${requestType} ${intentName}`); // requestEnvelope
+    this.logger.log(`Handling ${requestType} ${intentName}`); // requestEnvelope
     try {
       responseEnvelope = await new Promise<ResponseEnvelope>((resolve, reject) => {
         SkillBuilders.custom().withSkillId(process.env.ALEXA_SKILL_ID).addRequestHandlers(

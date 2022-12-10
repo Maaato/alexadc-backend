@@ -27,11 +27,13 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
+    "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "ask-sdk-core": "^2.12.1",
     "ask-sdk-express-adapter": "^2.12.1",
     "ask-sdk-model": "^1.39.0",
     "discord.js": "^14.6.0",
+    "mongoose": "^6.8.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"

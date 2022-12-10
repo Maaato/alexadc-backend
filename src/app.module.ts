@@ -5,6 +5,7 @@ import { AlexaSkillsModule } from './api/alexa-skills/alexa-skills.module';
 import { DiscordModule } from './services/discord/discord.module';
 import { HttpClientModule } from './services/http-client/services.module';
 import { BotModule } from './bot/bot.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { BotModule } from './bot/bot.module';
     HttpClientModule,
     AlexaSkillsModule,
     DiscordModule,
-    BotModule
+    BotModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
 })
