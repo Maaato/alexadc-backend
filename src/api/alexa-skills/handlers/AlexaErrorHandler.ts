@@ -23,11 +23,11 @@ export class AlexaErrorHandler implements ErrorHandler {
     this.logger.warn(`Error handling '${intentName}' | ${error}`);
     const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
     const handlerName = getHandlerNameByIntentName(intentName);
-    const { error: { outputSpeech } } = this._alexaSkillsService.getHandlerResponseBuilderMessage(handlerName, localeRequest);
+    const { error: { outputSpeech } } = this._alexaSkillsService.buildResponseMessage(handlerName, localeRequest);
 
     return handlerInput.responseBuilder
       .speak(outputSpeech)
-      .withShouldEndSession(false)
+      .withShouldEndSession(true)
       .getResponse();
   }
 }

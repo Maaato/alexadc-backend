@@ -18,7 +18,7 @@ export class CancelAndStopHandler implements RequestHandler {
 
   handle(handlerInput: HandlerInput): Response {
     const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
-    const { success: { outputSpeech } } = this._alexaSkillsService.getHandlerResponseBuilderMessage(CancelAndStopHandler.name, localeRequest);
+    const { success: { outputSpeech } } = this._alexaSkillsService.buildResponseMessage(CancelAndStopHandler.name, localeRequest);
 
     return handlerInput.responseBuilder
       .speak(outputSpeech)

@@ -21,9 +21,9 @@ export class BotGateway {
 
     @On('voiceStateUpdate')
     async onVoiceStateUpdate(lastState: VoiceState, newState: VoiceState): Promise<MemberDocument> {
-        this.logger.log(`Handling VoiceStateUpdate for ${newState.member.user.username}`);
         if (lastState.channelId === newState.channelId) return; // Ignore if the user is in the same channel
         if (newState.member.user.bot) return; // Ignore if the user is a bot
+        this.logger.log(`Handling VoiceStateUpdate for ${newState.member.user.username}`);
         const { channelId, guild, member } = newState;
         const memberVoiceState: MemberVoiceState = {
             userId: member.user.id,

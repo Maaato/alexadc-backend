@@ -24,8 +24,6 @@ export class BotService {
 
     async getMemberVoiceState({ userId }: { userId: string }): Promise<MemberDocument> {
         this.logger.log(`Finding member by id ${userId}`)
-        const member = this.memberModel.findOne({ userId });
-        console.log("member", member);
-        return member;
+        return this.memberModel.findOne({ userId });
     }
 }
