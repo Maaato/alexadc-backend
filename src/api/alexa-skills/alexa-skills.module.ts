@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { AlexaSkillsService } from './alexa-skills.service';
 import { AlexaSkillsController } from './alexa-skills.controller';
 import { DiscordModule } from '../../services/discord/discord.module';
+import { BotModule } from 'src/bot/bot.module';
 
 @Module({
-  imports: [DiscordModule],
+  imports: [DiscordModule, BotModule],
   controllers: [AlexaSkillsController],
   providers: [AlexaSkillsService],
 })

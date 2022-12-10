@@ -22,6 +22,7 @@ import { BotService } from './bot.service';
         }),
         MongooseModule.forFeature([{ name: 'Member', schema: MemberSchema }]),
     ],
-    providers: [BotGateway, BotService]
+    providers: [BotGateway, BotService],
+    exports: [BotService]
 })
 export class BotModule { }

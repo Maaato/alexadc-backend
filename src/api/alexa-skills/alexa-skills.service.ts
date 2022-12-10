@@ -6,6 +6,7 @@ import { LaunchRequestHandler, SessionEndedRequestHandler, CancelAndStopHandler,
 import { DiscordService } from '../../services/discord/discord.service';
 import { RESPONSE_BUILDER_MESSAGES } from '../../constants/handlers-messages.constants';
 import Constants from '../../constants/alexa.constants'
+import { BotService } from 'src/bot/bot.service';
 
 
 @Injectable()
@@ -14,7 +15,8 @@ export class AlexaSkillsService {
   private readonly logger = new Logger(AlexaSkillsService.name)
 
   constructor(
-    private readonly _discordService: DiscordService) { }
+    private readonly _discordService: DiscordService,
+    private readonly _botService: BotService) { }
 
   async handleRequest(requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
     let responseEnvelope: ResponseEnvelope;
@@ -27,7 +29,7 @@ export class AlexaSkillsService {
           new LaunchRequestHandler(this),
           new SessionEndedRequestHandler(),
           new CancelAndStopHandler(this),
-          new PlaySongOnDiscordHandler(this, this._discordService)
+          new PlaySongOnDiscordHandler(this, this._discordService, this._botService)
         ).addErrorHandlers(new AlexaErrorHandler(this))
           .lambda()(requestEnvelope, requestEnvelope.context, (err: Error, result: ResponseEnvelope) => {
             if (err) {

@@ -16,10 +16,17 @@ export class BotService {
 
     async updateMemberVoiceState({ memberVoiceState }: { memberVoiceState: MemberVoiceState }): Promise<MemberDocument> {
         const { userId, username, discriminator, guildId, guildName, currentChannelId } = memberVoiceState;
-        this.logger.log(`Updating member voice state ${ username }`)
+        this.logger.log(`Updating member voice state ${username}`)
         return await this.memberModel.findOneAndUpdate({ userId },
             { $set: { userId, username, discriminator, guildId, guildName, currentChannelId } },
             { upsert: true, new: true }
         );
+    }
+
+    async getMemberVoiceState({ userId }: { userId: string }): Promise<MemberDocument> {
+        this.logger.log(`Finding member by id ${userId}`)
+        const member = await this.memberModel.findOne({ userId });
+        console.log("member", member);
+        return member;
     }
 }
