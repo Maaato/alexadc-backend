@@ -1,4 +1,4 @@
-export class MemberVoiceState {
+export interface IMemberVoiceState {
     readonly userId: string;
     readonly username: string;
     readonly discriminator: string;

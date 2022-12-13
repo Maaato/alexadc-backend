@@ -6,7 +6,7 @@ import { LaunchRequestHandler, SessionEndedRequestHandler, CancelAndStopHandler,
 import { DiscordService } from '../../services/discord/discord.service';
 import { RESPONSE_BUILDER_MESSAGES } from '../../constants/handlers-messages.constants';
 import Constants from '../../constants/alexa.constants'
-import { BotService } from 'src/bot/bot.service';
+import { BotService } from '../../bot/bot.service';
 
 
 @Injectable()
@@ -45,7 +45,7 @@ export class AlexaSkillsService {
     }
     return responseEnvelope;
   }
-  
+
   //TODO: Refactor this method
   public buildResponseMessage(handlerName: string, locale: string, replacementValue?: string) {
     let { success, error = null } = RESPONSE_BUILDER_MESSAGES[locale][handlerName];

@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { MemberDocument } from 'src/database/schemas/member.schema';
-import { MemberVoiceState } from './models/memberVoiceState.dto';
+import { IMemberVoiceState } from '../interfaces/memberVoiceState.interface';
 
 @Injectable()
 export class BotService {
@@ -13,7 +13,7 @@ export class BotService {
         @InjectModel('Member') private readonly memberModel: Model<MemberDocument>
     ) { }
 
-    async updateMemberVoiceState({ memberVoiceState }: { memberVoiceState: MemberVoiceState }): Promise<MemberDocument> {
+    async updateMemberVoiceState({ memberVoiceState }: { memberVoiceState: IMemberVoiceState }): Promise<MemberDocument> {
         const { userId, username, discriminator, guildId, guildName, currentChannelId } = memberVoiceState;
         this.logger.log(`Updating member voice state ${username}`)
         return this.memberModel.findOneAndUpdate({ userId },

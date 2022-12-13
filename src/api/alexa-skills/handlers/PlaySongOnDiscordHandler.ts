@@ -27,7 +27,6 @@ export class PlaySongOnDiscordHandler implements RequestHandler {
     const { success: { outputSpeech } } = this._alexaSkillsService.buildResponseMessage(PlaySongOnDiscordHandler.name, localeRequest, songRequest);
     const { currentChannelId } = await this._botService.getMemberVoiceState({ userId: process.env.DISCORD_BOT_OWNER_USER_ID });
     await this._discordService.sendRequestSongMessage({ channelId: currentChannelId, content: songRequest })
-
     return handlerInput.responseBuilder
       .speak(outputSpeech)
       .withShouldEndSession(true)

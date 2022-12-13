@@ -3,7 +3,7 @@ import { InjectDiscordClient, Once, On } from '@discord-nestjs/core';
 import { Client, VoiceState } from 'discord.js';
 import { BotService } from './bot.service';
 import { MemberDocument } from 'src/database/schemas/member.schema';
-import { MemberVoiceState } from './models/memberVoiceState.dto'
+import { IMemberVoiceState } from '../interfaces/memberVoiceState.interface'
 
 @Injectable()
 export class BotGateway {
@@ -25,7 +25,7 @@ export class BotGateway {
         if (newState.member.user.bot) return; // Ignore if the user is a bot
         this.logger.log(`Handling VoiceStateUpdate for ${newState.member.user.username}`);
         const { channelId, guild, member } = newState;
-        const memberVoiceState: MemberVoiceState = {
+        const memberVoiceState: IMemberVoiceState = {
             userId: member.user.id,
             username: member.user.username,
             discriminator: member.user.discriminator,

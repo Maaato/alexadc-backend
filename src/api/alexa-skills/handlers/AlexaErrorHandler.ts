@@ -3,7 +3,7 @@ import { HandlerInput, getLocale, ErrorHandler, getIntentName } from 'ask-sdk-co
 import { Response } from 'ask-sdk-model';
 
 import { AlexaSkillsService } from '../alexa-skills.service';
-import { getHandlerNameByIntentName } from 'src/utils/alexa.utils';
+import { getHandlerNameByIntentName } from '../../../utils/alexa.utils';
 
 
 export class AlexaErrorHandler implements ErrorHandler {

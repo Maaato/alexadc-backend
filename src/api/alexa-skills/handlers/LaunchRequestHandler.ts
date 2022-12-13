@@ -20,7 +20,6 @@ export class LaunchRequestHandler implements RequestHandler {
     const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
     const { username } = await this._botService.getMemberVoiceState({ userId: process.env.DISCORD_BOT_OWNER_USER_ID });
     const { success: { outputSpeech, repromptSpeech } } = this._alexaSkillsService.buildResponseMessage(LaunchRequestHandler.name, localeRequest, username);
-
     return handlerInput.responseBuilder
       .speak(outputSpeech)
       .reprompt(repromptSpeech)
