@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
+import { RequestEnvelope } from 'ask-sdk-model';
 import { AxiosResponse } from 'axios'
 
 import { AlexaSkillsService } from './alexa-skills.service';

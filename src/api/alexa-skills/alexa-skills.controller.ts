@@ -1,5 +1,4 @@
 import { Controller, HttpCode, HttpStatus, Post, Body } from '@nestjs/common';
-import { Request } from '@nestjs/common/decorators';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { AlexaSkillsService } from './alexa-skills.service';
 
