@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { AxiosResponse } from 'axios'
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { HttpClientService } from '../http-client/http-client.service';
 import { DiscordService } from './discord.service';
 
