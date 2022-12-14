@@ -3,7 +3,7 @@ import { HandlerInput, getLocale, ErrorHandler, getIntentName } from 'ask-sdk-co
 import { Response } from 'ask-sdk-model';
 
 import { AlexaSkillsService } from '../alexa-skills.service';
-import { getHandlerNameByIntentName } from 'src/utils/alexa.utils';
+import { getHandlerNameByIntentName } from '../../../utils/alexa.utils';
 
 
 export class AlexaErrorHandler implements ErrorHandler {
@@ -23,11 +23,11 @@ export class AlexaErrorHandler implements ErrorHandler {
     this.logger.warn(`Error handling '${intentName}' | ${error}`);
     const localeRequest = getLocale(handlerInput.requestEnvelope).split("-")[0];
     const handlerName = getHandlerNameByIntentName(intentName);
-    const { error: { outputSpeech } } = this._alexaSkillsService.getHandlerResponseBuilderMessage(handlerName, localeRequest);
+    const { error: { outputSpeech } } = this._alexaSkillsService.buildResponseMessage(handlerName, localeRequest);
 
     return handlerInput.responseBuilder
       .speak(outputSpeech)
-      .withShouldEndSession(false)
+      .withShouldEndSession(true)
       .getResponse();
   }
 }

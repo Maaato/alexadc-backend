@@ -1,8 +1,8 @@
 import { AxiosRequestHeaders } from 'axios';
 
 export interface IHttpParams {
-  method: 'delete' | 'get' | 'put' | 'post';
-  url: string;
-  data?: any;
-  customHeaders?: AxiosRequestHeaders;
+  readonly method: 'delete' | 'get' | 'put' | 'post';
+  readonly url: string;
+  readonly data?: any;
+  readonly customHeaders?: AxiosRequestHeaders;
 }
