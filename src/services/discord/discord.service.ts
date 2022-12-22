@@ -16,7 +16,7 @@ export class DiscordService {
 
     async sendRequestSongMessage({ channelId, content }): Promise<AxiosResponse> {
         const url = `${this._API_ENDPOINT}/channels/${channelId}/messages`;
-        const data = { content: `${process.env.DISCORD_MUSIC_BOT_PREFIX}play ${content}` } //TODO: Get Discord Bot Prefix
+        const data = { content: `${process.env.DISCORD_MUSIC_BOT_COMMAND} ${content}` } //TODO: Get Discord Bot Prefix
         return lastValueFrom(this._httpService.post(url, data, this._headers));
     }
 }
